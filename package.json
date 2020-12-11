@@ -1,0 +1,28 @@
+{
+  "name": "njs-battle-ships",
+  "version": "0.0.1",
+  "description": "The Name stands for Node.JS Battleships. A Classic Game.",
+  "main": "./boot/boot.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "node ./boot/boot.js --force-tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ProjectHSI/NJS-Battle-Ships.git"
+  },
+  "keywords": [
+    "Battleships",
+    "Battle",
+    "Ships",
+    "Game"
+  ],
+  "author": "[Project HSI]",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ProjectHSI/NJS-Battle-Ships/issues"
+  },
+  "homepage": "https://github.com/ProjectHSI/NJS-Battle-Ships#readme"
+}
