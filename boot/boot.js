@@ -5,7 +5,6 @@ const dc = require("diagnostics_channel");
 const channel = dc.channel('hsi-njsbs-dc');
 // █▓▒░
 console.clear()
-npmlog.info("NJSBS", process.env)
 npmlog.info("NJSBS", `█████████████████████████████████████████████████████████████████`);
 npmlog.info("NJSBS", `█                                                               █▓`);
 npmlog.info("NJSBS", `█ Node.JS Battle Ships [v0.0.1 Development Unsigned Build]      █▓▒`);

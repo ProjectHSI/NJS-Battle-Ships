@@ -1,6 +1,6 @@
 {
   "name": "njs-battle-ships",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "The Name stands for Node.JS Battleships. A Classic Game.",
   "main": "./boot/boot.js",
   "directories": {
