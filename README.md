@@ -10,12 +10,11 @@ PK = Public Key
 
 You've Probably Seen This. This is a signed commit of mine. This is signed using OpenPGP.
 
-| Encrypt | Encrypts Using Your Own SK                                                                                 |
-
+| Action  | What it does                                                                                               |
+| ------- | ---------------------------------------------------------------------------------------------------------- |
+| Encrypt | Encrypts A File Or String Using Your Own SK                                                                |
 | Sign    | Signs Files Make them Vaild. This is what Signed Commits have done. They are signed with actual GPG Codes. |
-
 | Verify  | Verifies a file using it's Signature File. You needs it's respective PK to verify it.                      |
-
 | Decrypt | Reverts an encryption using a respective PK.                                                               |
 
 ## Why is there no Signature Files For The Things?
