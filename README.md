@@ -6,7 +6,7 @@ PK = Public Key
 
 ## What is OpenPGP?
 
-    ![Signed Commit](https://github.com/ProjectHSI/NJS-Battle-Ships/blob/master/Signed%20Commit.png?raw=true)
+<img src="https://raw.githubusercontent.com/ProjectHSI/NJS-Battle-Ships/master/Signed%20Commit.png">
 
 You've Probably Seen This. This is a signed commit of mine. This is signed using OpenPGP.
 
