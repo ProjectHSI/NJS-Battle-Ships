@@ -24,5 +24,8 @@
   "bugs": {
     "url": "https://github.com/ProjectHSI/NJS-Battle-Ships/issues"
   },
-  "homepage": "https://github.com/ProjectHSI/NJS-Battle-Ships#readme"
+  "homepage": "https://github.com/ProjectHSI/NJS-Battle-Ships#readme",
+  "dependencies": {
+    "npmlog": "^4.1.2"
+  }
 }
