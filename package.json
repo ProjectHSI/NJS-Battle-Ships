@@ -26,6 +26,7 @@
   },
   "homepage": "https://github.com/ProjectHSI/NJS-Battle-Ships#readme",
   "dependencies": {
+    "ansi-colors": "^4.1.1",
     "npmlog": "^4.1.2"
   }
 }
