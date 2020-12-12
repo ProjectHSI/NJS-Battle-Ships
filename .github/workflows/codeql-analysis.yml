@@ -1,0 +1,123 @@
+# For most projects, this workflow file will not need changing; you simply need
+# to commit it to your repository.
+#
+# You may wish to alter this file to override the set of languages analyzed,
+# or to provide custom queries or build logic.
+#
+# ******** NOTE ********
+# We have attempted to detect the languages in your repository. Please check
+# the `language` matrix defined below to confirm you have the correct set of
+# supported CodeQL languages.
+#
+name: "CodeQL"
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    # The branches below must be a subset of the branches above
+    branches: [ master ]
+  schedule:
+    - cron: '24 9 * * 2'
+
+jobs:
+  analyze:
+    name: Analyze
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        language: [ 'javascript' ]
+        # CodeQL supports [ 'cpp', 'csharp', 'go', 'java', 'javascript', 'python' ]
+        # Learn more:
+        # https://docs.github.com/en/free-pro-team@latest/github/finding-security-vulnerabilities-and-errors-in-your-code/configuring-code-scanning#changing-the-languages-that-are-analyzed
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    # Initializes the CodeQL tools for scanning.
+    - name: Initialize CodeQL
+      uses: github/codeql-action/init@v1
+      with:
+        languages: ${{ matrix.language }}
+        # If you wish to specify custom queries, you can do so here or in a config file.
+        # By default, queries listed here will override any specified in a config file.
+        # Prefix the list here with "+" to use these queries and those in the config file.
+        # queries: ./path/to/local/query, your-org/your-repo/queries@main
+
+    # Autobuild attempts to build any compiled languages  (C/C++, C#, or Java).
+    # If this step fails, then you should remove it and run the build manually (see below)
+    - name: Autobuild
+      uses: github/codeql-action/autobuild@v1
+
+    # ℹ️ Command-line programs to run using the OS shell.
+    # 📚 https://git.io/JvXDl
+
+    # ✏️ If the Autobuild fails above, remove it and uncomment the following three lines
+    #    and modify them (or add more) to build your code if your project
+    #    uses a compiled language
+
+    #- run: |
+    #   make bootstrap
+    #   make release
+
+    - name: Perform CodeQL Analysis
+      uses: github/codeql-action/analyze@v1
+    - name: Setup Node.js environment
+      uses: actions/setup-node@v2.1.3
+      with:
+        # Set always-auth in npmrc
+        always-auth: false # optional, default is false
+        # Version Spec of the version to use.  Examples: 12.x, 10.15.1, >=10.15.0
+        node-version: "15.1.0"
+        # Target architecture for Node to use. Examples: x86, x64. Will use system architecture by default.
+        architecture: "x64" # optional
+        # Set this option if you want the action to check for the latest available version that satisfies the version spec
+        check-latest: true
+        # Used to pull node distributions from node-versions.  Since there's a default, this is typically not supplied by the user.
+        token: ${{ github.token }} # optional, default is ${{ github.token }}
+    - name: Close Stale Issues
+      uses: actions/stale@v3.0.14
+      with:
+        # Token for the repository. Can be passed in using `{{ secrets.GITHUB_TOKEN }}`.
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+        # The message to post on the issue when tagging it. If none provided, will not mark issues stale.
+        stale-issue-message: "This issue is stale and will be closed Soon."
+        # The message to post on the pr when tagging it. If none provided, will not mark pull requests stale.
+        stale-pr-message: "This PR is stale and will be closed Soon."
+        # The message to post on the issue when closing it. If none provided, will not comment when closing an issue.
+        close-issue-message: "This issue is stale and has been closed."
+        # The message to post on the pr when closing it. If none provided, will not comment when closing a pull requests.
+        close-pr-message: "This issue is stale and has been closed."
+        # The number of days old an issue can be before marking it stale. Set to -1 to never mark issues or pull requests as stale automatically.
+        days-before-stale: 31
+        # The number of days to wait to close an issue or pull request after it being marked stale. Set to -1 to never close stale issues.
+        days-before-close: 7
+        # The label to apply when an issue is stale.
+        stale-issue-label: "stale"
+        # The label to apply when an issue is closed.
+        close-issue-label: "closed"
+        # The labels to apply when an issue is exempt from being marked stale. Separate multiple labels with commas (eg. "label1,label2")
+        exempt-issue-labels: "do not mark stale" 
+        # The label to apply when a pull request is stale.
+        stale-pr-label: "stale"
+        # The label to apply when a pull request is closed.
+        close-pr-label: "closed"
+        # The labels to apply when a pull request is exempt from being marked stale. Separate multiple labels with commas (eg. "label1,label2")
+        exempt-pr-labels: "do not mark stale" 
+        # Only issues or pull requests with all of these labels are checked if stale. Defaults to `[]` (disabled) and can be a comma-separated list of labels.
+        only-labels: ""
+        # The maximum number of operations per run, used to control rate limiting.
+        operations-per-run: 30
+        # Remove stale labels from issues when they are updated or commented on.
+        remove-stale-when-updated: true
+        # Run the processor in debug mode without actually performing any operations on live issues.
+        debug-only: false
+        # The order to get issues or pull requests. Defaults to false, which is descending
+        ascending: false
+        # Skip adding stale message when marking a pull request as stale.
+        skip-stale-pr-message: false
+        # Skip adding stale message when marking an issue as stale.
+        skip-stale-issue-message: false
